@@ -81,12 +81,12 @@ From ls(penguins), we can see that there are 8 variables: "bill_depth_mm", "bill
 
 From summary (penguins), we can see the 5 number summary and mean of each variable.
 
-The size of the dataset is 2752.
+The dataset has 344 rows and 8 columns. The size of the dataset is 2752.
 
 The mean of flipper length is 200.9152.
 
 
- #### part 2 : scatterplot and ggsave
+#### part 2 : scatterplot and ggsave
 
 ```{r}
 plot_df = tibble(x = pull(penguins,bill_length_mm), y = pull(penguins,flipper_length_mm), species=pull(penguins,species))
@@ -95,5 +95,5 @@ ggplot(plot_df, aes(x = x, y = y, color=species)) + geom_point()
 ggsave("scatter_plot.pdf", height = 4, width = 6)
 ```
 
-
+HW1 finished.
 
