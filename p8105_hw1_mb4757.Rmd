@@ -12,7 +12,7 @@ library(tidyverse)
 
 ## Problem 1
 
-Create a data frame from with the specified elements.
+#### Create a data frame from with the specified elements.
 
 ```{r}
 prob1_df =
@@ -24,7 +24,7 @@ prob1_df =
 )
 ```
 
-Take the mean of each variable in my data frame.
+#### Take the mean of each variable in my data frame.
 
 ```{r}
 mean(pull(prob1_df, samp))
@@ -43,7 +43,7 @@ as.numeric(pull(prob1_df, factor_vec))
 ```
 
 
-convert the logical vector to different data types and multiply the random sample by the result
+#### convert the logical vector to different data types and multiply the random sample by the result
 
 ```{r}
 as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
@@ -54,10 +54,46 @@ as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
 
 ## Problem 2
 
-load penguins dataset.
+#### load penguins dataset.
 
 ```{r}
 data("penguins", package = "palmerpenguins")
+penguins
 ```
+
+#### part1 : the data in this dataset (names / values of important variables), the size of the dataset, the mean flipper length
+
+```{r}
+ls(penguins)
+summary(penguins)
+
+nrow(penguins)
+ncol(penguins)
+size = nrow(penguins) * ncol(penguins)
+print(size)
+
+mean(penguins$flipper_length_mm, na.rm = TRUE)
+
+```
+Explanation of the codes:
+
+From ls(penguins), we can see that there are 8 variables: "bill_depth_mm", "bill_length_mm", "body_mass_g", "flipper_length_mm" "island", "sex", "species", "year".
+
+From summary (penguins), we can see the 5 number summary and mean of each variable.
+
+The size of the dataset is 2752.
+
+The mean of flipper length is 200.9152.
+
+
+ #### part 2 : scatterplot and ggsave
+
+```{r}
+plot_df = tibble(x = pull(penguins,bill_length_mm), y = pull(penguins,flipper_length_mm), species=pull(penguins,species))
+view(plot_df)
+ggplot(plot_df, aes(x = x, y = y, color=species)) + geom_point()
+ggsave("scatter_plot.pdf", height = 4, width = 6)
+```
+
 
 
