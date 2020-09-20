@@ -75,15 +75,17 @@ print(size)
 mean(penguins$flipper_length_mm, na.rm = TRUE)
 
 ```
-Explanation of the codes:
+Explanation of the codes by using inline r code:
 
-From ls(penguins), we can see that there are 8 variables: "bill_depth_mm", "bill_length_mm", "body_mass_g", "flipper_length_mm" "island", "sex", "species", "year".
+We can see that there are 8 variables: `r ls(penguins)`.
 
-From summary (penguins), we can see the 5 number summary and mean of each variable.
+We can see the values (5 number summary and mean) of each variable `r summary(penguins)`.
 
-The dataset has 344 rows and 8 columns. The size of the dataset is 2752.
+The dataset has `r nrow(penguins)` rows and `r col(penguins)` columns. 
 
-The mean of flipper length is 200.9152.
+The size of the dataset is `r nrow(penguins) * ncol(penguins)`.
+
+The mean of flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`.
 
 
 #### part 2 : scatterplot and ggsave
